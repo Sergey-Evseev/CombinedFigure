@@ -32,8 +32,23 @@ namespace CombinedFigure
         double Square();
         double Perimeter();
     }
+    class Triangle : Figure, FigureData
+    {
+        public override void Draw()
+        {
+            
+        }
 
+        double FigureData.Perimeter()
+        {
+            return 0;
+        }
 
+        double FigureData.Square()
+        {
+            return 0;
+        }
+    }
 
     class Rectangle : Figure, FigureData
     {
