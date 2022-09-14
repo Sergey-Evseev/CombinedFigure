@@ -1,4 +1,5 @@
 ﻿//Lesson 6. Problem 1. Разработать абстрактный класс Геометрическая-Фигура с полями ПлощадьФигуры и ПериметрФигуры.
+
 //Разработать классы-наследники: Треугольник, Квадрат, Ромб, Прямоугольник, Параллелограмм, Трапеция,
 //Круг, Эллипс и реализовать свойства, которые однозначно определяют объекты данных классов.
 //Реализовать интерфейс ПростойНУгольник, который имеет свойства: Высота, Основание, УголМеждуОснованиемИСмежнойСтороной, КоличествоСторон, 
@@ -7,25 +8,37 @@
 //Предусмотреть варианты невозможности задания фигуры (введены отрицательные длины сторон или при создании объекта треугольника существует пара сторон,
 //сумма длин которых меньше длины третьей стороны и т.п.)
 
+//Площадь, периметр в интерфейс. Внутри каждого класса сделать свой метод. 
+//Lesson 5 page 34, lesson 6 page 8 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Math;
 using static System.Console;
 
 namespace CombinedFigure
 {
-    abstract class Figure
-    {
-        public abstract void Draw();
+    abstract class Figure 
+    { 
+    public int Width { get; set; }
+    public int Height { get; set; }    
+    public abstract void Draw();    
     }
-    
-    abstract class Quadrangle : Figure { }
-    class Rectangle : Quadrangle
+    interface FigureData
     {
-        public int Width { get; set; }
-        public int Height { get; set; }
+        double Square();
+        double Perimeter();
+    }
+
+
+
+    class Rectangle : Figure, FigureData
+    {
+        public new int Width { get; set; }
+        public new int Height { get; set; }
         public static implicit operator Rectangle(Square s)
         {
             return new Rectangle
@@ -49,8 +62,18 @@ namespace CombinedFigure
         {
             return $"Rectangle: Width = {Width},Height = { Height}";
 }
+
+        double FigureData.Square()
+        {
+            throw new NotImplementedException();
+        }
+
+        double FigureData.Perimeter()
+        {
+            throw new NotImplementedException();
+        }
     }
-    class Square : Quadrangle
+    class Square : Figure
     {
         public int Length { get; set; }
         public static explicit operator
