@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace CombinedFigure
 {
-    internal class Triangle : Figure, FigureData
+    internal class Triangle : Figure, IFigureData
 
     {
         public override void Draw()
         {
 
         }
-        double FigureData.Perimeter()
+        double IFigureData.Perimeter()
         {
             return 0;
         }
 
-        double FigureData.Square()
+        double IFigureData.Square()
         {
             return 0;
         }

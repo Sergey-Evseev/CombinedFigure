@@ -3,7 +3,7 @@
 //Разработать классы-наследники: Треугольник, Квадрат, Ромб, Прямоугольник, Параллелограмм, Трапеция,
 //Круг, Эллипс и реализовать свойства, которые однозначно определяют объекты данных классов.
 
-//Реализовать интерфейс ПростойНУгольник, который имеет свойства: Высота, Основание, УголМеждуОснованиемИСмежнойСтороной, КоличествоСторон, 
+//Реализовать интерфейс ПростойN-Угольник, который имеет свойства: Высота, Основание, УголМеждуОснованиемИСмежнойСтороной, КоличествоСторон, 
 //ДлиныСторон, Площадь, Периметр. Реализовать класс СоставнаяФигура который может состоять из любого количества ПростыхНУгольников.
 //Для данного класса определить метод нахождения площади фигуры.
 //Предусмотреть варианты невозможности задания фигуры (введены отрицательные длины сторон или при создании объекта треугольника существует пара сторон,
@@ -31,43 +31,8 @@ namespace CombinedFigure
             Width = 0;
             Height = 0;
         }    
-    } 
-
-
-    
-
-    class Square : Figure
-    {
-        public int Length { get; set; }
-        public static explicit operator
-        Square(Rectangle rect)
-        {
-            return new Square { Length = rect.Height };
-        }
-        public static explicit operator int(Square s)
-        {
-            return s.Length;
-        }
-        public static implicit operator Square(int number)
-        {
-            return new Square { Length = number };
-        }
-        public override void Draw()
-        {
-            for (int i = 0; i < Length; i++, WriteLine())
-            {
-                for (int j = 0; j < Length; j++)
-                {
-                    Write("*");
-                }
-            }
-            WriteLine();
-        }
-        public override string ToString()
-        {
-            return $"Square: Length = {Length}";
-        }
-    }
+    }    
+        
     class Program
     {
         static void Main(string[] args)

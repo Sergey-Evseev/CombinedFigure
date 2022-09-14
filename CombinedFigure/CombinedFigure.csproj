@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Square.cs" />
     <Compile Include="Rectangle.cs" />
     <Compile Include="Triangle.cs" />
     <Compile Include="FigureData.cs" />

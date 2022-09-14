@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CombinedFigure
 {
-    internal interface FigureData
+    internal interface IFigureData
     {
         double Square();
         double Perimeter();

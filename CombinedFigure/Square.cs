@@ -7,23 +7,27 @@ using static System.Console;
 
 namespace CombinedFigure
 {
-    internal class Rectangle : Figure, IFigureData
+    internal class Square : Figure, IFigureData
     {
-        public new int Width { get; set; }
-        public new int Height { get; set; }
-        public static implicit operator Rectangle(Square s)
+        public int Length { get; set; }
+        public static explicit operator
+        Square(Rectangle rect)
         {
-            return new Rectangle
-            {
-                Width = s.Length * 2,
-                Height = s.Length
-            };
+            return new Square { Length = rect.Height };
+        }
+        public static explicit operator int(Square s)
+        {
+            return s.Length;
+        }
+        public static implicit operator Square(int number)
+        {
+            return new Square { Length = number };
         }
         public override void Draw()
         {
-            for (int i = 0; i < Height; i++, WriteLine())
+            for (int i = 0; i < Length; i++, WriteLine())
             {
-                for (int j = 0; j < Width; j++)
+                for (int j = 0; j < Length; j++)
                 {
                     Write("*");
                 }
@@ -32,7 +36,7 @@ namespace CombinedFigure
         }
         public override string ToString()
         {
-            return $"Rectangle: Width = {Width},Height = {Height}";
+            return $"Square: Length = {Length}";
         }
 
         double IFigureData.Square()
@@ -44,6 +48,5 @@ namespace CombinedFigure
         {
             throw new NotImplementedException();
         }
-
     }
 }
