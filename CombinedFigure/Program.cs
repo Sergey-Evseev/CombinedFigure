@@ -2,6 +2,7 @@
 
 //Разработать классы-наследники: Треугольник, Квадрат, Ромб, Прямоугольник, Параллелограмм, Трапеция,
 //Круг, Эллипс и реализовать свойства, которые однозначно определяют объекты данных классов.
+
 //Реализовать интерфейс ПростойНУгольник, который имеет свойства: Высота, Основание, УголМеждуОснованиемИСмежнойСтороной, КоличествоСторон, 
 //ДлиныСторон, Площадь, Периметр. Реализовать класс СоставнаяФигура который может состоять из любого количества ПростыхНУгольников.
 //Для данного класса определить метод нахождения площади фигуры.
@@ -25,69 +26,16 @@ namespace CombinedFigure
     { 
     public int Width { get; set; }
     public int Height { get; set; }    
-    public abstract void Draw();    
-    }
-    interface FigureData
-    {
-        double Square();
-        double Perimeter();
-    }
-    class Triangle : Figure, FigureData
-    {
-        public override void Draw()
-        {
-            
-        }
+    public abstract void Draw(); //в классе наследнике: : base(param1, param2)
+    public Figure() {
+            Width = 0;
+            Height = 0;
+        }    
+    } 
 
-        double FigureData.Perimeter()
-        {
-            return 0;
-        }
 
-        double FigureData.Square()
-        {
-            return 0;
-        }
-    }
+    
 
-    class Rectangle : Figure, FigureData
-    {
-        public new int Width { get; set; }
-        public new int Height { get; set; }
-        public static implicit operator Rectangle(Square s)
-        {
-            return new Rectangle
-            {
-                Width = s.Length * 2,
-                Height = s.Length
-            };
-        }
-        public override void Draw()
-        {
-            for (int i = 0; i < Height; i++, WriteLine())
-            {
-                for (int j = 0; j < Width; j++)
-                {
-                    Write("*");
-                }
-            }
-            WriteLine();
-        }
-        public override string ToString()
-        {
-            return $"Rectangle: Width = {Width},Height = { Height}";
-}
-
-        double FigureData.Square()
-        {
-            throw new NotImplementedException();
-        }
-
-        double FigureData.Perimeter()
-        {
-            throw new NotImplementedException();
-        }
-    }
     class Square : Figure
     {
         public int Length { get; set; }
